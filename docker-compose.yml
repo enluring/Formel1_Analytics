@@ -8,6 +8,7 @@ volumes:
 services:
   f1_db:
     image: postgres
+    container_name: f1_db
     restart: always
     environment:
       POSTGRES_USER: f1admin
@@ -20,6 +21,7 @@ services:
 
   f1_pgadmin:
     image: dpage/pgadmin4
+    container_name: f1_pgadmin
     environment:
         PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
         PGADMIN_DEFAULT_PASSWORD: admin
@@ -33,6 +35,7 @@ services:
 
   f1_grafana:
     image: grafana/grafana
+    container_name: f1_grafana
     restart: always
     ports:
       - "3001:3000"
