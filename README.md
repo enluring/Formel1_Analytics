@@ -8,3 +8,7 @@ git clone https://github.com/enluring/Formel1_Analytics
 cd dockprom
 `````
 
+
+## Datagrunnlag
+Datagrunnlaget er hentet fra følgende: http://ergast.com/mrd/db/
+
