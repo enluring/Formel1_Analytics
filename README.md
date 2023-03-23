@@ -3,5 +3,8 @@ Dette er en test for å se om jeg klarer å lage en kontainer med noe fornuftig 
 
 ## Install
 CLone dette repositoriet 
-git clone https://github.com/stefanprodan/dockprom
+````
+git clone https://github.com/enluring/Formel1_Analytics
 cd dockprom
+`````
+
