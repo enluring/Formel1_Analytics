@@ -1,0 +1,18 @@
+
+## - Token og autorisering - ##
+#Free Demo token
+HdoiD312ND….
+
+# f1-demo token
+rslUIr0aS2BmJJ4Jqd36O2QIIxrkqnypgAyomaKW4XBQ53QYEHrBqwX9XqMj
+
+
+
+
+
+## - bruk av API - ## 
+# First request
+https://f1.sportmonks.com/api/v1.0/seasons?api_token={HdoiD312ND….}
+https://f1.sportmonks.com/api/v1.0/seasons?api_token={rslUIr0aS2BmJJ4Jqd36O2QIIxrkqnypgAyomaKW4XBQ53QYEHrBqwX9XqMj}
+
+

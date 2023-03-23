@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: f1admin
+      POSTGRES_PASSWORD: f1admin
+      POSTGRES_DB: f1db
+    ports:
+      - "5433:5433"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
