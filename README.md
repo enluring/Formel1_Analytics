@@ -15,7 +15,6 @@ Installasjon av phyton og addons for å kjøre script til tabell oppdatering osv
 sudo apt install python3-pip
 sudo apt-get install python3-psycopg2
 pip install psycopg2-binary
-
 `````
 
 ## Las ned og installere repo
