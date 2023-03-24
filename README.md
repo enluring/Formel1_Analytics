@@ -10,10 +10,11 @@ Datagrunnlaget er hentet fra følgende: http://ergast.com/mrd/db/
 * Docker og docer-comppse
 * phyton 
 
-Installasjon av phyton og addons
+Installasjon av phyton og addons for å kjøre script til tabell oppdatering osv
 `````
 sudo apt install python3-pip
-sudo pip install psycopg2
+sudo apt-get install python3-psycopg2
+pip install psycopg2-binary
 
 `````
 
