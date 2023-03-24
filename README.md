@@ -6,6 +6,17 @@ Datagrunnlaget er hentet fra følgende: http://ergast.com/mrd/db/
 
 
 # Install and configure
+## Krav til løsning
+* Docker og docer-comppse
+* phyton 
+
+Installasjon av phyton og addons
+`````
+sudo apt install python3-pip
+sudo pip install mysql-connector-python
+
+`````
+
 ## Las ned og installere repo
 Først så skal vi clone ned repoet dette repositoriet 
 ````
