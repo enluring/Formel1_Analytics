@@ -3,7 +3,7 @@ CREATE TABLE drivers (
     driverId SERIAL PRIMARY KEY,
     driverRef VARCHAR(20),
     number INTEGER,
-    code VARCHAR(10)
+    code VARCHAR(10),
     forename VARCHAR(50),
     surname VARCHAR(50),
     dob DATE,
