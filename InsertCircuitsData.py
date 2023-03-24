@@ -10,6 +10,8 @@ conn_params = {
     "user": "f1admin",
     "password": "f1admin"
 }
+# Connect to the PostgreSQL database
+conn = psycopg2.connect(**conn_params)
 cursor = conn.cursor()
 
 # Get the path to the SQL file
