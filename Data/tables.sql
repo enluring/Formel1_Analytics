@@ -9,7 +9,6 @@ CREATE TABLE drivers (
     dob DATE,
     nationality VARCHAR(50),
     url VARCHAR(255)
-
 );
 
 --- constructorId,constructorRef,name,nationality,url
