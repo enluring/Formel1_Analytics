@@ -45,7 +45,7 @@ CREATE TABLE races (
 --- raceId,driverId,lap,position,time,milliseconds
 CREATE TABLE lap_times (
     race_id INTEGER REFERENCES races (id),
-    driver_id INTEGER REFERENCES drivers (id),
+    driver_id INTEGER REFERENCES drivers (driverId),
     lap INTEGER,
     position INTEGER,
     time VARCHAR(20),
