@@ -4,7 +4,7 @@ CREATE TABLE drivers (
     driverRef VARCHAR(20),
     number INTEGER,
     code VARCHAR(10),
-    forename VARCHAR(50),
+    name VARCHAR(50),
     surname VARCHAR(50),
     dob DATE,
     nationality VARCHAR(50),
@@ -19,7 +19,6 @@ CREATE TABLE constructors (
     nationality VARCHAR(50),
     url VARCHAR(255)
 ); 
-
 
 
 -- Create the circuits table circuitId,circuitRef,name,location,country,lat,lng,alt,url
