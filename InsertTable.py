@@ -1,4 +1,5 @@
 import psycopg2
+import os
 
 # Define the connection parameters
 conn_params = {
@@ -13,8 +14,12 @@ conn_params = {
 conn = psycopg2.connect(**conn_params)
 cursor = conn.cursor()
 
+# Get the path to the SQL file
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, 'data', 'tables.sql')
+
 # Read the SQL file and execute each statement
-with open('tables.sql', 'r') as f:
+with open(file_path, 'r') as f:
     sql = f.read()
 
 # Split the SQL statements by semicolons
