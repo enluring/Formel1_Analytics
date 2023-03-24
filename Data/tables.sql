@@ -19,7 +19,8 @@ CREATE TABLE constructors (
     name VARCHAR(100) UNIQUE,
     nationality VARCHAR(50),
     url VARCHAR(255)
-);
+); 
+
 
 
 -- Create the circuits table circuitId,circuitRef,name,location,country,lat,lng,alt,url
