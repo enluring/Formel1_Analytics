@@ -44,24 +44,12 @@ CREATE TABLE races (
     circuit INTEGER REFERENCES circuits (circuit_id)
 );
 
+--- raceId,driverId,lap,position,time,milliseconds
 CREATE TABLE lap_times (
     race_id INTEGER REFERENCES races (id),
     driver_id INTEGER REFERENCES drivers (id),
     lap INTEGER,
+    position INTEGER
     time VARCHAR(20),
-    session_type VARCHAR(10)
+    milliseconds VARCHAR(20)
 );
-
-CREATE TABLE results (
-    race_id INTEGER REFERENCES races (id),
-    driver_id INTEGER REFERENCES drivers (id),
-    team_id INTEGER REFERENCES teams (id),
-    start_grid INTEGER,
-    position INTEGER,
-    points FLOAT,
-    laps INTEGER,
-    time VARCHAR(20),
-    fastest_lap INTEGER,
-    fastest_lap_time VARCHAR(20)
-);
-
