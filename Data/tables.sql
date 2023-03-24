@@ -1,22 +1,28 @@
+--- CSV info: driverId,driverRef,number,code,forename,surname,dob,nationality,url
 CREATE TABLE drivers (
-    id SERIAL PRIMARY KEY,
-    team_id INTEGER REFERENCES teams (id),
-    driver_no INTEGER,
+    driverId SERIAL PRIMARY KEY,
+    driverRef VARCHAR(20),
+    number INTEGER,
+    code VARCHAR(10)
     forename VARCHAR(50),
     surname VARCHAR(50),
+    dob DATE,
     nationality VARCHAR(50),
-    dob DATE
+    url VARCHAR(255)
 
 );
 
-CREATE TABLE teams (
-    id SERIAL PRIMARY KEY,
+--- constructorId,constructorRef,name,nationality,url
+CREATE TABLE constructors (
+    constructorId SERIAL PRIMARY KEY,
+    constructorRef VARCHAR(30),
     name VARCHAR(100) UNIQUE,
-    nationality VARCHAR(50)
+    nationality VARCHAR(50),
+    url VARCHAR(255)
 );
 
 
--- Create the circuits table
+-- Create the circuits table circuitId,circuitRef,name,location,country,lat,lng,alt,url
 CREATE TABLE circuits (
     circuit_id SERIAL PRIMARY KEY,
     circuit_ref VARCHAR(255) UNIQUE NOT NULL,
@@ -29,6 +35,7 @@ CREATE TABLE circuits (
 );
 
 
+--- raceId,year,round,circuitId,name,date,time,url,fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time
 CREATE TABLE races (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
