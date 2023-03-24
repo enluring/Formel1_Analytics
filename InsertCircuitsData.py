@@ -29,7 +29,7 @@ with open(file_path, 'r') as csvfile:
 placeholders = ','.join(['%s'] * len(rows[0]))
 
 # insert data into database
-query = f"INSERT INTO mytable (col1, col2, col3) VALUES ({placeholders})"
+query = f"INSERT INTO circuits (circuit_id, circuit_ref, name, location, country, geolocation, altitude, url) VALUES ({placeholders})"
 cursor.executemany(query, rows)
 conn.commit()
 
