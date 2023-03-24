@@ -47,7 +47,7 @@ CREATE TABLE lap_times (
     race_id INTEGER REFERENCES races (id),
     driver_id INTEGER REFERENCES drivers (id),
     lap INTEGER,
-    position INTEGER
+    position INTEGER,
     time VARCHAR(20),
     milliseconds VARCHAR(20)
 );
