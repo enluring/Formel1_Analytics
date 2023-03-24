@@ -13,7 +13,7 @@ Datagrunnlaget er hentet fra følgende: http://ergast.com/mrd/db/
 Installasjon av phyton og addons
 `````
 sudo apt install python3-pip
-sudo pip install mysql-connector-python
+sudo pip install psycopg2
 
 `````
 

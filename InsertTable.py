@@ -1,27 +1,30 @@
-import mysql.connector
+import psycopg2
 
-# Connect to the database
-db = mysql.connector.connect(
-    host="172.19.0.2:5432",
-    user="f1admin",
-    password="f1admin",
-    database="f1db"
-)
+# Define the connection parameters
+conn_params = {
+    "host": "172.19.0.2",
+    "port": "5432",
+    "database": "f1db",
+    "user": "f1admin",
+    "password": "f1admin"
+}
 
-# Open the SQL file and read the commands
-with open("tables.sql", "r") as f:
-    commands = f.read()
+# Connect to the PostgreSQL database
+conn = psycopg2.connect(**conn_params)
+cursor = conn.cursor()
 
-# Split the commands into individual statements
-statements = commands.split(";")
+# Read the SQL file and execute each statement
+with open('tables.sql', 'r') as f:
+    sql = f.read()
 
-# Remove any whitespace or empty statements
-statements = [s.strip() for s in statements if s.strip()]
+# Split the SQL statements by semicolons
+statements = sql.split(';')
 
 # Execute each statement
 for statement in statements:
-    cursor = db.cursor()
-    cursor.execute(statement)
+    if statement.strip() != '':
+        cursor.execute(statement)
 
-# Close the database connection
-db.close()
+# Commit the changes and close the connection
+conn.commit()
+conn.close()
