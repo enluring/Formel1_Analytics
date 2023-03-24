@@ -4,7 +4,7 @@ CREATE TABLE drivers (
     driverRef VARCHAR(20),
     number INTEGER,
     code VARCHAR(10),
-    name VARCHAR(50),
+    forename VARCHAR(50),
     surname VARCHAR(50),
     dob DATE,
     nationality VARCHAR(50),
