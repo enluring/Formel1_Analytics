@@ -28,7 +28,8 @@ CREATE TABLE circuits (
     name VARCHAR(255) NOT NULL,
     location VARCHAR(255),
     country VARCHAR(255),
-    geolocation POINT,
+    lat float,
+    lng float,
     altitude INT,
     url VARCHAR(255)
 );
