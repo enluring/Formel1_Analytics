@@ -30,7 +30,7 @@ CREATE TABLE circuits (
     country VARCHAR(255),
     lat numeric,
     lng numeric,
-    altitude VARCHAR(5),
+    alt VARCHAR(5),
     url VARCHAR(255)
 );
 
