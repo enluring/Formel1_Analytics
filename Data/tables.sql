@@ -45,7 +45,7 @@ CREATE TABLE races (
     date date,
     time time without time zone,
     url VARCHAR(255),
-    fp1_date,
+    fp1_date date,
     fp1_time time without time zone,
     fp2_date date,
     fp2_time time without time zone,
