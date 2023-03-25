@@ -40,7 +40,7 @@ CREATE TABLE races (
     raceId SERIAL PRIMARY KEY,
     year numeric,
     round numeric,
-    circuitId INTEGER REFERENCES drivers (circuitId),
+    circuitId INTEGER REFERENCES circuits (circuitId),
     name VARCHAR(100),
     date date,
     time time without time zone,
@@ -71,7 +71,7 @@ CREATE TABLE lap_times (
 ---- driverStandingsId,raceId,driverId,points,position,positionText,wins
 CREATE TABLE lap_times (
     driverStandingsId INTEGER,
-    raceId INTEGER REFERENCES REFERENCES drivers (raceId),
+    raceId INTEGER REFERENCES REFERENCES races (raceId),
     driverId INTEGER REFERENCES drivers (driverId),
     points INTEGER,
     position INTEGER,
