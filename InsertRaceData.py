@@ -16,7 +16,7 @@ cursor = conn.cursor()
 
 # Get the path to the SQL file
 script_dir = os.path.dirname(__file__)
-file_path = os.path.join(script_dir, 'data', 'circuits.csv')
+file_path = os.path.join(script_dir, 'data', 'races.csv')
 
 
 # open CSV file and read contents into a list
@@ -29,8 +29,8 @@ with open(file_path, 'r') as csvfile:
 placeholders = ','.join(['%s'] * len(rows[0]))
 
 # insert data into database
-# Colons from the circuits table: circuitId,circuitRef,name,location,country,lat,lng,alt,url
-query = f"INSERT INTO circuits (circuitId,circuitRef,name,location,country,lat,lng,alt,url) VALUES ({placeholders})"
+# --- raceId,year,round,circuitId,name,date,time,url,fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time
+query = f"INSERT INTO races (raceId, year, round, circuitId, name, date, date, time, url, fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time) VALUES ({placeholders})"
 cursor.executemany(query, rows)
 conn.commit()
 

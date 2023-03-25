@@ -23,8 +23,8 @@ CREATE TABLE constructors (
 
 -- Create the circuits table circuitId,circuitRef,name,location,country,lat,lng,alt,url
 CREATE TABLE circuits (
-    circuit_id SERIAL PRIMARY KEY,
-    circuit_ref VARCHAR(255) UNIQUE NOT NULL,
+    circuitId SERIAL PRIMARY KEY,
+    circuitRef VARCHAR(255) UNIQUE NOT NULL,
     name VARCHAR(255) NOT NULL,
     location VARCHAR(255),
     country VARCHAR(255),
@@ -37,10 +37,24 @@ CREATE TABLE circuits (
 
 --- raceId,year,round,circuitId,name,date,time,url,fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time
 CREATE TABLE races (
-    id SERIAL PRIMARY KEY,
+    raceId SERIAL PRIMARY KEY,
+    year numeric,
+    round numeric,
+    circuitId INTEGER REFERENCES circuits (circuit_id),
     name VARCHAR(100),
-    date DATE,
-    circuit INTEGER REFERENCES circuits (circuit_id)
+    date date,
+    time time without time zone,
+    url VARCHAR(255),
+    fp1_date,
+    fp1_time time without time zone,
+    fp2_date date,
+    fp2_time time without time zone,
+    fp3_date date,
+    fp3_time time without time zone,
+    quali_date date,
+    quali_time time without time zone,
+    sprint_date date,
+    sprint_time time without time zone
 );
 
 --- raceId,driverId,lap,position,time,milliseconds
@@ -51,4 +65,16 @@ CREATE TABLE lap_times (
     position INTEGER,
     time VARCHAR(20),
     milliseconds VARCHAR(20)
+);
+
+
+---- driverStandingsId,raceId,driverId,points,position,positionText,wins
+CREATE TABLE lap_times (
+    driverStandingsId INTEGER,
+    raceId INTEGER REFERENCES,
+    driverId INTEGER,
+    points INTEGER,
+    position INTEGER,
+    positionText VARCHAR(20),
+    wins INTEGER
 );
