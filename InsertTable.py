@@ -16,7 +16,7 @@ cursor = conn.cursor()
 
 # Get the path to the SQL file
 script_dir = os.path.dirname(__file__)
-file_path = os.path.join(script_dir, 'data', 'tables.sql')
+file_path = os.path.join(script_dir, 'Data', 'tables.sql')
 
 # Read the SQL file and execute each statement
 with open(file_path, 'r') as f:
