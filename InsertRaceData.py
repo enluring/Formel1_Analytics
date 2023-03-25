@@ -30,7 +30,7 @@ placeholders = ','.join(['%s'] * len(rows[0]))
 
 # insert data into database
 # --- raceId,year,round,circuitId,name,date,time,url,fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time
-query = f"INSERT INTO races (raceId, year, round, circuitId, name, date, date, time, url, fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time) VALUES ({placeholders})"
+query = f"INSERT INTO races (raceId, year, round, circuitId, name, date, time, url, fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time) VALUES ({placeholders})"
 cursor.executemany(query, rows)
 conn.commit()
 
