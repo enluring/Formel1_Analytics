@@ -71,7 +71,7 @@ CREATE TABLE lap_times (
 ---- driverStandingsId,raceId,driverId,points,position,positionText,wins
 CREATE TABLE lap_times (
     driverStandingsId INTEGER,
-    raceId INTEGER REFERENCES REFERENCES races (raceId),
+    raceId INTEGER REFERENCES races (raceId),
     driverId INTEGER REFERENCES drivers (driverId),
     points INTEGER,
     position INTEGER,
