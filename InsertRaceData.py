@@ -23,7 +23,7 @@ file_path = os.path.join(script_dir, 'data', 'races.csv')
 with open(file_path, 'r') as csvfile:
     reader = csv.reader(csvfile)
     next(reader) # skip header row
-    rows = [tuple(row) for row in reader]
+    rows = [[None if field == r'\N' else field for field in row] for row in reader]
 
 # generate placeholders for SQL query
 placeholders = ','.join(['%s'] * len(rows[0]))
