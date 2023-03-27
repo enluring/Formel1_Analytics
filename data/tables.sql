@@ -74,7 +74,7 @@ CREATE TABLE driver_standings (
     raceId INTEGER REFERENCES races (raceId),
     driverId INTEGER REFERENCES drivers (driverId),
     points INTEGER,
-    position INTEGER,
+    position numeric,
     positionText VARCHAR(20),
     wins INTEGER
 );
