@@ -1,0 +1,130 @@
+{
+    "aliasColors": {},
+    "bars": false,
+    "dashLength": 10,
+    "dashes": false,
+    "fill": 1,
+    "fillGradient": 0,
+    "gridPos": {
+      "h": 9,
+      "w": 12,
+      "x": 0,
+      "y": 0
+    },
+    "id": 1,
+    "legend": {
+      "alignAsTable": true,
+      "avg": true,
+      "current": true,
+      "hideEmpty": false,
+      "hideZero": false,
+      "max": true,
+      "min": true,
+      "rightSide": false,
+      "show": true,
+      "total": false,
+      "values": true
+    },
+    "lines": true,
+    "linewidth": 1,
+    "nullPointMode": "null",
+    "options": {
+      "dataLinks": []
+    },
+    "percentage": false,
+    "pointradius": 2,
+    "points": false,
+    "renderer": "flot",
+    "seriesOverrides": [],
+    "spaceLength": 10,
+    "stack": false,
+    "steppedLine": false,
+    "targets": [
+      {
+        "alias": "$driverid",
+        "groupBy": [
+          {
+            "params": [
+              "lap"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "$driverid"
+            ],
+            "type": "tag"
+          }
+        ],
+        "measurement": "lap_times",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "query": "SELECT mean(\"milliseconds\") FROM \"lap_times\" WHERE \"racid\" =~ /^$raceid$/ GROUP BY time($__interval), \"driverid\"",
+        "rawQuery": true,
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [
+            {
+              "params": [
+                "milliseconds"
+              ],
+              "type": "field"
+            },
+            {
+              "params": [],
+              "type": "mean"
+            }
+          ]
+        ],
+        "tags": []
+      }
+    ],
+    "thresholds": [],
+    "timeFrom": null,
+    "timeRegions": [],
+    "timeShift": null,
+    "title": "F1 Laptimes for Selected Race",
+    "tooltip": {
+      "shared": true,
+      "sort": 0,
+      "value_type": "individual"
+    },
+    "type": "graph",
+    "xaxis": {
+      "buckets": null,
+      "mode": "time",
+      "name": null,
+      "show": true,
+      "values": []
+    },
+    "yaxes": [
+      {
+        "format": "ms",
+        "label": null,
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true
+      },
+      {
+        "format": "short",
+        "label": null,
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true
+      }
+    ],
+    "yaxis": {
+      "align": false,
+      "alignLevel": null
+    },
+    "annotations": {
+      "list": [
+        {   
+          "builtIn": 1,
+          "datasource
+        }
+    ]
+ 
