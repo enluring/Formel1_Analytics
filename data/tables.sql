@@ -49,7 +49,7 @@ CREATE TABLE constructor_standings (
     constructorId INTEGER REFERENCES constructors (constructorId),
     points numeric,
     position numeric,
-    positionText VARCHAR(10)
+    positionText VARCHAR(10),
     wins numeric
 );
 
@@ -131,7 +131,7 @@ CREATE TABLE sprint_results (
     points numeric,
     laps INTEGER,
     time VARCHAR(20),
-    milliseconds number,
+    milliseconds numeric,
     fastestLap INTEGER,
     fastestLapTime VARCHAR(20),
     statusId INTEGER

@@ -16,28 +16,35 @@ cursor = conn.cursor()
 
 # Get the path to the SQL file
 script_dir = os.path.dirname(__file__)
-file_path = os.path.join(script_dir, 'Data', 'tables.sql')
+file_path = os.path.join(script_dir, 'data', 'tables.sql')
 
 # Read the SQL file and execute each statement
+#with open(file_path, 'r') as f:
+#    sql = f.read()
+
 with open(file_path, 'r') as f:
-    sql = f.read()
+    # Remove comments from the SQL file
+    sql = '\n'.join([line for line in f.readlines() if not line.strip().startswith('--')])
+
 
 # Split the SQL statements by semicolons
 statements = sql.split(';')
 
 # Execute each statement
-#for statement in statements:
-#    if statement.strip() != '':
-#        cursor.execute(statement)
-
-# Execute each statement - Checks if the table exists
 for statement in statements:
     if statement.strip() != '':
-        try:
-            cursor.execute(statement)
-        except psycopg2.errors.DuplicateTable:
-            print(f"Table already exists for statement: {statement}")
-            continue
+        table_name = statement.split()[2]
+        check_table_sql = f"SELECT to_regclass('{table_name}');"
+        cursor.execute(check_table_sql)
+        table_exists = cursor.fetchone()[0]
+        if not table_exists:
+            try:
+                cursor.execute(statement)
+            except Exception as e:
+                print(f"Error executing statement: {statement}")
+                print(f"Error message: {e}")
+                conn.rollback()
+                break
 
 
 # Commit the changes and close the connection
