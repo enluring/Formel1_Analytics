@@ -11,6 +11,18 @@ CREATE TABLE drivers (
     url VARCHAR(255)
 );
 
+---- driverStandingsId,raceId,driverId,points,position,positionText,wins
+CREATE TABLE driver_standings (
+    driverStandingsId INTEGER,
+    raceId INTEGER REFERENCES races (raceId),
+    driverId INTEGER REFERENCES drivers (driverId),
+    points INTEGER,
+    position numeric,
+    positionText VARCHAR(20),
+    wins INTEGER
+);
+
+
 --- constructorId,constructorRef,name,nationality,url
 CREATE TABLE constructors (
     constructorId SERIAL PRIMARY KEY,
@@ -20,6 +32,26 @@ CREATE TABLE constructors (
     url VARCHAR(255)
 ); 
 
+---- constructorResultsId,raceId,constructorId,points,status
+CREATE TABLE constructor_results (
+    constructorResultsId INTEGER,
+    raceId INTEGER REFERENCES races (raceId),
+    constructorId INTEGER REFERENCES constructors (constructorId),
+    points numeric,
+    position numeric,
+    status VARCHAR(50)
+);
+
+---- constructorStandingsId,raceId,constructorId,points,position,positionText,wins
+CREATE TABLE constructor_standings (
+    constructorStandingsId INTEGER,
+    raceId INTEGER REFERENCES races (raceId),
+    constructorId INTEGER REFERENCES constructors (constructorId),
+    points numeric,
+    position numeric,
+    positionText VARCHAR(10)
+    wins numeric
+);
 
 -- Create the circuits table circuitId,circuitRef,name,location,country,lat,lng,alt,url
 CREATE TABLE circuits (
@@ -34,6 +66,12 @@ CREATE TABLE circuits (
     url VARCHAR(255)
 );
 
+
+---- year,url
+CREATE TABLE seasons (
+    year VARCHAR(6) PRIMARY KEY,
+    url VARCHAR(255)
+);
 
 --- raceId,year,round,circuitId,name,date,time,url,fp1_date,fp1_time,fp2_date,fp2_time,fp3_date,fp3_time,quali_date,quali_time,sprint_date,sprint_time
 CREATE TABLE races (
@@ -64,12 +102,44 @@ CREATE TABLE lap_times (
     lap INTEGER,
     position INTEGER,
     time VARCHAR(20),
-    milliseconds VARCHAR(20)
+    milliseconds numeric
+);
+
+--- raceId,driverId,stop,lap,time,duration,milliseconds
+CREATE TABLE pit_stops (
+    raceId INTEGER REFERENCES races (raceid),
+    driverId INTEGER REFERENCES drivers (driverId),
+    stop INTEGER,
+    lap INTEGER,
+    time VARCHAR(20),
+    duration VARCHAR(20),
+    milliseconds numeric
+);
+
+
+-- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,fastestLapTime,statusId
+CREATE TABLE sprint_results (
+    resultId INTEGER PRIMARY KEY,
+    raceId numeric,
+    driverId INTEGER,
+    constructorId INTEGER,
+    number INTEGER,
+    grid INTEGER,
+    position INTEGER,
+    positionText VARCHAR(10),
+    positionOrder INTEGER,
+    points numeric,
+    laps INTEGER,
+    time VARCHAR(20),
+    milliseconds number,
+    fastestLap INTEGER,
+    fastestLapTime VARCHAR(20),
+    statusId INTEGER
 );
 
 
 ---- driverStandingsId,raceId,driverId,points,position,positionText,wins
-CREATE TABLE driver_standings (
+CREATE TABLE status (
     driverStandingsId INTEGER,
     raceId INTEGER REFERENCES races (raceId),
     driverId INTEGER REFERENCES drivers (driverId),

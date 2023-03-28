@@ -26,9 +26,19 @@ with open(file_path, 'r') as f:
 statements = sql.split(';')
 
 # Execute each statement
+#for statement in statements:
+#    if statement.strip() != '':
+#        cursor.execute(statement)
+
+# Execute each statement - Checks if the table exists
 for statement in statements:
     if statement.strip() != '':
-        cursor.execute(statement)
+        try:
+            cursor.execute(statement)
+        except psycopg2.errors.DuplicateTable:
+            print(f"Table already exists for statement: {statement}")
+            continue
+
 
 # Commit the changes and close the connection
 conn.commit()
