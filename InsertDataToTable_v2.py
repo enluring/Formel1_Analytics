@@ -35,7 +35,9 @@ for file_name in os.listdir(DATA_DIR):
         for row in reader:
             # Replace '\N' values with None or an empty string
             row = [None if x == '\\N' else x for x in row]
-            row = [None if x == '""' else x for x in row]
+            row = [None if x == r' ' else x for x in row]
+            #row = [None if x == '""' else x for x in row]
+            #row = [float(val) if val.replace(".", "", 1).isdigit() else None for val in row]
             try:
                 rows_to_insert.append(tuple(row))
             except ValueError:
