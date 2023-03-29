@@ -115,6 +115,28 @@ CREATE TABLE pit_stops (
     milliseconds numeric
 );
 
+--- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,rank,fastestLapTime,fastestLapSpeed,statusId
+CREATE TABLE results (
+    resultId INTEGER PRIMARY KEY,
+    raceId numeric,
+    driverId INTEGER,
+    constructorId INTEGER,
+    number INTEGER,
+    grid INTEGER,
+    position INTEGER,
+    positionText VARCHAR(10),
+    positionOrder INTEGER,
+    points numeric,
+    laps INTEGER,
+    time VARCHAR(20),
+    milliseconds numeric,
+    fastestLap INTEGER,
+    rank numeric,
+    fastestLapTime VARCHAR(20),
+    fastestLapSpeed VARCHAR(20),
+    statusId INTEGER
+);
+
 
 -- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,fastestLapTime,statusId
 CREATE TABLE sprint_results (
@@ -137,13 +159,8 @@ CREATE TABLE sprint_results (
 );
 
 
----- driverStandingsId,raceId,driverId,points,position,positionText,wins
+---- statusId,status
 CREATE TABLE status (
-    driverStandingsId INTEGER,
-    raceId INTEGER REFERENCES races (raceId),
-    driverId INTEGER REFERENCES drivers (driverId),
-    points INTEGER,
-    position numeric,
-    positionText VARCHAR(20),
-    wins INTEGER
+    statusId INTEGER,
+    status VARCHAR(50)
 );

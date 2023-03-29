@@ -34,6 +34,7 @@ statements = sql.split(';')
 for statement in statements:
     if statement.strip() != '':
         table_name = statement.split()[2]
+        print(f"Trying to create table {table_name}")
         check_table_sql = f"SELECT to_regclass('{table_name}');"
         cursor.execute(check_table_sql)
         table_exists = cursor.fetchone()[0]
