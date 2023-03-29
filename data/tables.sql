@@ -1,4 +1,3 @@
---- CSV info: driverId,driverRef,number,code,forename,surname,dob,nationality,url
 CREATE TABLE drivers (
     driverId SERIAL PRIMARY KEY,
     driverRef VARCHAR(20),
@@ -131,7 +130,7 @@ CREATE TABLE sprint_results (
     points numeric,
     laps INTEGER,
     time VARCHAR(20),
-    milliseconds numeric,
+    milliseconds number,
     fastestLap INTEGER,
     fastestLapTime VARCHAR(20),
     statusId INTEGER
