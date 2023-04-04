@@ -66,7 +66,7 @@ Det er en rekke forbedringer som kan gjøres
 * rydde i noen gamle filer
 * Rydde i tabellene slik at de matcher ergast med typer og foreldre
 * Fikse konfigurasjon av grafana blir lagt inn i imaget
-* Lage default views som blir med inn i grafana
+* Lage default views som blir med inn i grafana -> http://ergast.com/docs/f1db_user_guide.txt
 * Hente data fra ergast apiet i stede for fra csv
 * Kombinere med fastf1 python bibloteket for oppdatering og live data
 
