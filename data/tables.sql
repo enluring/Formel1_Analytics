@@ -117,21 +117,21 @@ CREATE TABLE pit_stops (
 
 --- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,rank,fastestLapTime,fastestLapSpeed,statusId
 CREATE TABLE results (
-    resultId INTEGER PRIMARY KEY,
-    raceId numeric,
+    resultId INTEGER,
+    raceId INTEGER,
     driverId INTEGER,
     constructorId INTEGER,
     number INTEGER,
     grid INTEGER,
     position INTEGER,
-    positionText VARCHAR(10),
+    positionText VARCHAR(255),
     positionOrder INTEGER,
-    points numeric,
+    points float,
     laps INTEGER,
-    time VARCHAR(20),
-    milliseconds numeric,
+    time VARCHAR(255),
+    milliseconds INTEGER,
     fastestLap INTEGER,
-    rank numeric,
+    rank INTEGER,
     fastestLapTime VARCHAR(20),
     fastestLapSpeed VARCHAR(20),
     statusId INTEGER

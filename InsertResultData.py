@@ -16,21 +16,22 @@ cursor = conn.cursor()
 
 # Get the path to the SQL file
 script_dir = os.path.dirname(__file__)
-file_path = os.path.join(script_dir, 'data', 'lap_times.csv')
+file_path = os.path.join(script_dir, 'data', 'results.csv')
 
 
 # open CSV file and read contents into a list
 with open(file_path, 'r') as csvfile:
     reader = csv.reader(csvfile)
     next(reader) # skip header row
-    rows = [[None if field == r' ' else field for field in row] for row in reader]
+    rows = [[None if field == r'\N' or field.strip() == '' or field == '\\N' else field for field in row] for row in reader]
 
 # generate placeholders for SQL query
 placeholders = ','.join(['%s'] * len(rows[0]))
 
 # insert data into database
-## raceId,driverId,lap,position,time,milliseconds
-query = f"INSERT INTO lap_times (raceId,driverId,lap,position,time,milliseconds) VALUES ({placeholders})"
+## -- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,fastestLapTime,statusId
+## -- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,rank,fastestLapTime,fastestLapSpeed,statusId
+query = f"INSERT INTO results (resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,rank,fastestLapTime,fastestLapSpeed,statusId) VALUES ({placeholders})"
 cursor.executemany(query, rows)
 conn.commit()
 

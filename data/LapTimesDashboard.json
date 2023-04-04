@@ -59,7 +59,7 @@
         "measurement": "lap_times",
         "orderByTime": "ASC",
         "policy": "default",
-        "query": "SELECT mean(\"milliseconds\") FROM \"lap_times\" WHERE \"racid\" =~ /^$raceid$/ GROUP BY time($__interval), \"driverid\"",
+        "query": "SELECT mean(\"milliseconds\") FROM \"lap_times\" WHERE \"racid\" =~ /^$raceid$/ GROUP BY time($__interval), \"driverid\ ,
         "rawQuery": true,
         "refId": "A",
         "resultFormat": "time_series",
