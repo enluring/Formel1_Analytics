@@ -4,6 +4,7 @@ Dette er en test for å se om jeg klarer å lage en kontainer med noe fornuftig 
 ## Datagrunnlag
 Datagrunnlaget er hentet fra følgende: http://ergast.com/mrd/db/
 
+Oppdatert: 2023-04-04 (Race 2023-04)
 
 # Install and configure
 ## Krav til løsning
@@ -59,6 +60,10 @@ Default når man kjører opp data fra lokal docker installasjon kan man nå de f
 * Grafana: http://localhost:3001
 * PGAdmin: http://localhost:8050
 
+Om du sitter remot så kan du lage ssh tunell for å åpne opp
+````
+ssh -L 3001:localhost:3001 brukernanv@remote_server
+````
 
 
 # Todo

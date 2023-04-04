@@ -115,6 +115,19 @@ CREATE TABLE pit_stops (
     milliseconds numeric
 );
 
+--- qualifyId,raceId,driverId,constructorId,number,position,q1,q2,q3
+CREATE TABLE qualifying (
+    qualifyId INTEGER,
+    raceId INTEGER REFERENCES races (raceId),
+    driverId INTEGER REFERENCES drivers (driverId),
+    constructorId INTEGER REFERENCES constructors (constructorId),
+    number INTEGER,
+    grid INTEGER,
+    position INTEGER,
+    q1 VARCHAR(255),
+    q2 VARCHAR(255),
+    q3 VARCHAR(255)
+);
 --- resultId,raceId,driverId,constructorId,number,grid,position,positionText,positionOrder,points,laps,time,milliseconds,fastestLap,rank,fastestLapTime,fastestLapSpeed,statusId
 CREATE TABLE results (
     resultId INTEGER,
