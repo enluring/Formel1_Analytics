@@ -44,7 +44,7 @@ Installer sql  klient først og koble opp til basen
 ````
 sudo apt install postgresql-client
 
-psql -h 172.19.0.2 -d f1db -U f1admin
+psql -h <hostname/IP> -d f1db -U f1admin
 `````
 Først oppretter vi alle tabeller som skal inn i databasen
 `````
@@ -68,10 +68,8 @@ ssh -L 3001:localhost:3001 brukernanv@remote_server
 
 # Todo
 Det er en rekke forbedringer som kan gjøres
-* rydde i noen gamle filer
-* Rydde i tabellene slik at de matcher ergast med typer og foreldre
 * Fikse konfigurasjon av grafana blir lagt inn i imaget
-* Lage default views som blir med inn i grafana -> http://ergast.com/docs/f1db_user_guide.txt
+* Lage default dashboards
 * Hente data fra ergast apiet i stede for fra csv
 * Kombinere med fastf1 python bibloteket for oppdatering og live data
 

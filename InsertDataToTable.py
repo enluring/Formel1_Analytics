@@ -17,10 +17,26 @@ cursor = conn.cursor()
 # Define the folder containing the CSV files
 DATA_DIR = "/home/harald/Formel1_Analytics/data"
 
+# Define the order of the CSV files
+csv_files = [
+    "drivers.csv",
+    "constructors.csv",
+    "circuits.csv",
+    "status.csv",
+    "seasons.csv",
+    "races.csv",
+    "lap_times.csv",
+    "pit_stops.csv",
+    "qualifying.csv",
+    "results.csv",
+    "constructor_results.csv",
+    "constructor_standings.csv",
+    "driver_standings.csv"
+]
+
+
 # Loop through CSV files in the data directory
-for file_name in os.listdir(DATA_DIR):
-    if not file_name.endswith(".csv"):
-        continue
+for file_name in csv_files:
     table_name = os.path.splitext(file_name)[0]
     file_path = os.path.join(DATA_DIR, file_name)
     with open(file_path, "r") as f:
@@ -28,17 +44,10 @@ for file_name in os.listdir(DATA_DIR):
         header = next(reader)
         columns = ", ".join(header)
         print(f"Data from {file_name} inserted into table {table_name}")
-        # Create table if it doesn't exist
-        #cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})")
-        # Insert rows from CSV file
         rows_to_insert = []
         for row in reader:
             # Replace '\N' values with None or an empty string
-            #row = [None if x == [ ,'\\N'] else x for x in row]
             row = [None if x in ['' ,'\\N'] or x.strip() == '' else x for x in row]
-            #row = [None if x == r' ' else x for x in row] x == r'\N' or x.strip() == '' or x == '\\N'
-            #row = [None if x == ' ' else x for x in row]
-            #row = [float(val) if val.replace(".",  , 1).isdigit() else None for val in row]
             try:
                 rows_to_insert.append(tuple(row))
             except ValueError:
