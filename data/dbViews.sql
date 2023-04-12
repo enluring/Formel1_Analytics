@@ -44,6 +44,7 @@ SELECT races.year,
     races.name,
     races.date,
     circuits.country,
+    circuits.location
     circuits.lat,
     circuits.lng,
     races.url
