@@ -65,3 +65,41 @@ SELECT
 FROM public."DriverResults" 
 GROUP BY name, code, dob, url
 ORDER BY dob DESC
+
+
+
+---
+--- Constructor informations
+---
+
+--- Constructors History with summarys
+SELECT 
+  constructorid,
+  team,
+  nationality,
+  COUNT(DISTINCT raceid) AS num_races, 
+  COUNT(DISTINCT year) AS num_years, 
+  COUNT(points) AS num_points,
+  url
+FROM public."ConstructorResults" 
+GROUP BY constructorId, team, nationality, url
+ORDER BY num_points DESC
+
+--- 
+SELECT 
+  constructorid,
+  team,
+  nationality,
+  COUNT(DISTINCT raceid) AS num_races, 
+  COUNT(DISTINCT year) AS num_years, 
+  COUNT(points) AS num_points,
+  url
+FROM public."ConstructorResults" 
+GROUP BY constructorId, team, nationality, url
+ORDER BY num_years DESC
+
+--- Finn alle nasjonene som har hatt et team
+SELECT 
+  nationality
+FROM public."ConstructorResults" 
+GROUP by nationality

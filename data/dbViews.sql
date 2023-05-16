@@ -42,15 +42,38 @@ SELECT driver_standings.driverid,
 
 ---- ConstructorResults - Gets its bases out of results, but add information about the teams
 CREATE VIEW public."ConstructorResults" AS
-SELECT results.raceid,
-    results.constructorid,
-    results."position",
-    results.points,
+SELECT constructor_results.raceid,
+    constructor_results.constructorid,
+    constructor_results."position",
+    constructor_results.points,
     constructors.constructorref,
     constructors.name AS team,
-    constructors.nationality
-   FROM results
-     JOIN constructors ON constructors.constructorid = results.constructorid;
+    constructors.nationality,
+    constructors.url,
+    races.year,
+    races.round
+   FROM constructor_results
+     JOIN constructors ON constructors.constructorid = constructor_results.constructorid
+     JOIN races ON constructor_results.raceId = races.raceId;
+
+
+---- ConstructorResults - Gets its bases out of results, but add information about the teams
+CREATE VIEW public."ConstructorStandings" AS
+SELECT constructor_standings.raceid,
+    constructor_standings.constructorid,
+    constructor_standings."position",
+    constructor_standings.points,
+    constructor_standings.wins,
+    constructors.name AS team,
+    constructors.nationality,
+    constructors.url,
+    races.year,
+    races.round
+   FROM constructor_results
+     JOIN constructors ON constructors.constructorid = constructor_standings.constructorid
+     JOIN races ON races.raceId = constructor_standings.raceId;
+
+
 
 -- Racecirucuits - Combining the races pr year with all possible asic circuits info
 CREATE VIEW public."RaceCircuits" AS

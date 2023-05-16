@@ -175,6 +175,5 @@ CREATE TABLE constructor_results (
     raceId INTEGER REFERENCES races (raceId),
     constructorId INTEGER REFERENCES constructors (constructorId),
     points numeric,
-    position numeric,
     status VARCHAR(50)
 );
