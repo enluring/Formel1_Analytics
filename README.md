@@ -39,7 +39,17 @@ sudo docker-compose up -d
 ``````
 
 ## Lage tabeller og legg innhold inn i databasen
-Du kan nå starte å lage tabeller i databasen i henhold til script ...
+Du kan nå starte å lage tabeller i databasen i henhold til script eller med å importere en db
+
+### installere med db import
+Sjekk at db eksisterer, skal hete f1db og den må være tom
+importere filen som ligger i data/sqldb ved å kjøre den inn i kontaineren
+````
+docker exec -i f1_db psql -U f1admin -d f1db < /data/sqldb/f1db_dump_latest.sql
+````
+NB fungerer ikke ved oppdatering da den vil feile om tabellene allerede eksisterer
+
+### installere med script
 Installer sql  klient først og koble opp til basen
 ````
 sudo apt install postgresql-client
