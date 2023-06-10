@@ -1,0 +1,59 @@
+version: '3'
+
+volumes:
+    postgres_data:
+    pgadmin_data:
+    grafana_data:
+
+services:
+  f1_db:
+    image: postgres
+    container_name: f1_db
+    restart: always
+    environment:
+      POSTGRES_USER: f1admin
+      POSTGRES_PASSWORD: f1admin
+      POSTGRES_DB: f1db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  f1_db_restore:
+    image: postgres
+    container_name: f1_db_restore
+    command: sh -c "pg_restore -U postgres -d f1db /data/sqldb/f1db_dump_latest.sql"
+    volumes:
+      - /data/sqldb/f1db_dump_latest.sql:/data/sqldb/f1db_dump_latest.sql
+    depends_on:
+      - f1_db
+
+  f1_pgadmin:
+    image: dpage/pgadmin4
+    container_name: f1_pgadmin
+    environment:
+        PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+        PGADMIN_DEFAULT_PASSWORD: admin
+        PGADMIN_LISTEN_PORT: 80
+    ports:
+        - 8050:80
+    volumes:
+        - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+        - f1_db
+
+  f1_grafana:
+    image: grafana/grafana
+    container_name: f1_grafana
+    restart: always
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./data/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false  
+    depends_on:
+      - f1_db
