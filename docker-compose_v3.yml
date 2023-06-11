@@ -22,9 +22,9 @@ services:
   f1_db_restore:
     image: postgres
     container_name: f1_db_restore
-    command: sh -c "pg_restore -U postgres -d f1db /data/sqldb/f1db_dump_latest.sql"
+    command: sh -c "pg_restore -U postgres -d f1db /var/lib/postgresql/data/f1db_dump_latest.sql"
     volumes:
-      - /data/sqldb/f1db_dump_latest.sql:/data/sqldb/f1db_dump_latest.sql
+      - /data/sqldb/f1db_dump_latest.sql:/var/lib/postgresql/data/f1db_dump_latest.sql
     depends_on:
       - f1_db
 
