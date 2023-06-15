@@ -1,6 +1,5 @@
-# This is the default version of the Foreml 1 Analyticsk docker composer file
-# After the installation tyou need to imnport all the data to the db and add all the grafana dashboards manualy
-# for other versjons see the other compse files
+# This is version 4 of the Foreml 1 Analyticsk docker composer file
+# It is search for doing an fresh install, with import of an postgre as an enterypoint script
 version: '3'
 
 volumes:
@@ -21,6 +20,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - /data/sqldb/f1db_dump_latest.sql:/data/f1db_dump_latest.sql
+    entrypoint: ["/scripts/entrypoint.sh"]
 
   f1_pgadmin:
     image: dpage/pgadmin4
@@ -44,6 +45,7 @@ services:
       - "3001:3000"
     volumes:
       - grafana_data:/var/lib/grafana
+      - ./data/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
