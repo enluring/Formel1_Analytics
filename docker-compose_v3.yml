@@ -1,3 +1,5 @@
+# This is version 3 of the Foreml 1 Analyticsk docker composer file
+# It is search for doing an fresh install, with import of an postgre backup
 version: '3'
 
 volumes:
