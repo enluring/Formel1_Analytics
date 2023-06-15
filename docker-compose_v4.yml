@@ -20,7 +20,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./data/sqldb/f1db_dump_latest.sql:/docker-entrypoint-initdb.d/f1db_dump_latest.sql
+      - ./data/sqldb:/docker-entrypoint-initdb.d
     entrypoint: ["/scripts/entrypoint.sh"]
 
   f1_pgadmin:
